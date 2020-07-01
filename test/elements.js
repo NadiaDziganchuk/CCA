@@ -1,3 +1,4 @@
+const {describe} = require("mocha");
 const selectorGen = require('../data/selectors.json').general;
 const expectedGen = require('./../data/expected.json').general;
 const selectorCnt = require('./../data/selectors.json').counter;
@@ -6,6 +7,7 @@ const expectedCnt = require('./../data/expected.json').counter;
 
 describe('Complex Counter App', function () {
     describe('Getting to the page', function () {
+
         it('TC-001 Page title is Complex Counter App', function () {
             browser.url('');
             const title = browser.getTitle();
@@ -44,6 +46,7 @@ describe('Complex Counter App', function () {
             expect(actual).toEqual(true);
         })
     });
+
     describe('Elements value', function () {
         it('TC-009 Header = Counter', function () {
             const actual = $(selectorGen.header).getText();
@@ -76,6 +79,7 @@ describe('Complex Counter App', function () {
     });
 
     describe('Default Counter elements exist', function () {
+
         it('TC-016 Counter Name', function () {
             const actual = $$(selectorCnt.counterName)[1].isDisplayed();
             expect(actual).toEqual(true);
@@ -97,9 +101,8 @@ describe('Complex Counter App', function () {
         });
 
         it('TC-020, TC-021 Default Sub and Add Buttons', function () {
-            // const actual = $$(selectorCnt.blackBtn).map(el => el.isDisplayed());
-            const actual = $$(selectorCnt.blackBtn);
-            expect(actual).toBeDisplayed();
+            const actual = $$(selectorCnt.blackBtn).filter(el => el.isDisplayed()).length;
+            expect(actual).toEqual(expectedCnt.defaultNumberBlackBtn);
         });
 
         it('TC-022 Delete button', function () {
@@ -111,6 +114,103 @@ describe('Complex Counter App', function () {
             const actual = $(selectorCnt.resetBtn).isDisplayed();
             expect(actual).toEqual(true);
         });
+
+        it('TC-024 Edit Name Field', function () {
+            const actual = $(selectorCnt.editNameField).isDisplayed();
+            expect(actual).toEqual(true);
+        });
+
+        it('TC-025 Label for Edit Name Field', function () {
+            const actual = $(selectorCnt.editNameFieldLabel).isDisplayed();
+            expect(actual).toEqual(true);
+        });
+
+        it('TC-026 Input for LLF', function () {
+            $(selectorCnt.lowerLimitField).click();
+            const actual = $(selectorCnt.lowerInputField).isDisplayed();
+            expect(actual).toEqual(true);
+        });
+
+        it('TC-027 Input for ULF', function () {
+            $(selectorCnt.upperLimitField).click();
+            const actual = $(selectorCnt.upperInputField).isDisplayed();
+            expect(actual).toEqual(true);
+        });
+
+    });
+
+    describe('Default Counter Elements value', function () {
+
+        it('TC-028 Counter Name = 1. Default Counter', function () {
+            const actual = $$(selectorCnt.counterName)[1].getText();
+            expect(actual).toEqual(expectedCnt.counterName);
+        });
+
+        it('TC-029 Count Value = 0', function () {
+            const actual = $(selectorCnt.countValue).getText();
+            expect(actual).toEqual(expectedCnt.countValue);
+        });
+
+        it('TC-030 LLF = CHANGE STEP OPTIONS?', function () {
+            browser.refresh();
+            const actual = $(selectorCnt.lowerLimitField).getText();
+            expect(actual).toEqual(expectedCnt.lowerLimitField);
+        });
+
+        it('TC-032 LLF = CHANGE STEP OPTIONS?', function () {
+            const actual = $(selectorCnt.upperLimitField).getText();
+            expect(actual).toEqual(expectedCnt.upperLimitField);
+        });
+
+        it('TC-031 && TC-033 Default Buttons = -1, -2, -3, 1, 2, 3', function () {
+            const actual = $$(selectorCnt.blackBtn).map(el => el.getText());
+            expect(actual).toEqual(expectedCnt.blackBtn);
+        });
+
+        it('TC-034 Delete button = Delete', function () {
+            const actual = $(selectorCnt.deleteBtn).getText();
+            expect(actual).toEqual(expectedCnt.deleteBtn);
+        });
+
+        it('TC-035 Reset button = Reset', function () {
+            const actual = $(selectorCnt.resetBtn).getText();
+            expect(actual).toEqual(expectedCnt.resetBtn);
+        });
+
+        it('TC-036 Label = Edit Counter Title', function () {
+            const actual = $(selectorCnt.editNameFieldLabel).getText();
+            expect(actual).toEqual(expectedCnt.editNameFieldLabel);
+        });
+
+        it('TC-037 Placeholder for Edit Name Field = Default Counter', function () {
+            const actual = $(selectorCnt.editNameFieldLabel).getText();
+            expect(actual).toEqual(expectedCnt.editNameFieldLabel);
+        });
+
+        it('TC-038 Input for LLF = 1', function () {
+            $(selectorCnt.lowerLimitField).click();
+            const actual = $(selectorCnt.lowerInputField).getValue();
+            expect(actual).toEqual(expectedCnt.lowerInputField);
+        });
+
+        it('TC-039 Input for ULF = 3', function () {
+            $(selectorCnt.upperLimitField).click();
+            const actual = $(selectorCnt.upperInputField).getValue();
+            expect(actual).toEqual(expectedCnt.upperInputField);
+        });
+
+        it('TC-179 Reset limit field for LLF', function () {
+            browser.refresh();
+            $(selectorCnt.lowerLimitField).click();
+            const actual = $(selectorCnt.resetLimitF).isDisplayed();
+            expect(actual).toEqual(true);
+        })
+
+        it('TC-180 Reset limit field for ULF', function () {
+            $(selectorCnt.upperLimitField).click();
+            const actual = $(selectorCnt.resetLimitF).isDisplayed();
+            expect(actual).toEqual(true);
+        })
 
     });
 
