@@ -10,6 +10,7 @@
   },
   "counter": {
     "counterName": "1. Default Counter",
+    "secondCounterName": "2. Counter Name",
     "lowerLimitField": "CHANGE STEP OPTIONS?",
     "lowerInputField": "1",
     "upperLimitField": "CHANGE STEP OPTIONS?",
@@ -23,10 +24,23 @@
     "blackBtn": ["-1", "-2", "-3", "1", "2", "3"]
   },
   "defaultCounterFunctionality": {
-    "countValueTC040": "-1",
-    "countValueTC041": "2",
+    "countValue-1": "-1",
+    "countValue2": "2",
     "inputMin": "1",
     "inputMax": "9"
+  },
+
+  "blackBtnValues": {
+    "values_add_sub": ["-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9",
+                        "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+    "value(1_9)": ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+    "value": "-9"
+  },
+
+  "counterValue": {
+    "newCounterValue": "New Name",
+    "secondCounterName": "2. Abcdefgh",
+    "thirdCounterName": "3. Abcdefgh"
   }
 
 }

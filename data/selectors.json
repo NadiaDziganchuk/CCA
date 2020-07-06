@@ -21,7 +21,9 @@
     "editNameFieldLabel": "label",
     "blackBtn": ".btn-black",
     "error": ".alert",
-    "resetLimitF": ".close-button"
+    "resetLimitF": ".close-button",
+    "redCross": ".btn-danger",
+    "blackBtn(Value)": ".btn-black[step='-9']"
   }
 }
 

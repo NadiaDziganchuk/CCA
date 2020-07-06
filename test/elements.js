@@ -199,19 +199,6 @@ describe('Complex Counter App', function () {
             expect(actual).toEqual(expectedCnt.upperInputField);
         });
 
-        it('TC-179 Reset limit field for LLF', function () {
-            browser.refresh();
-            $(selectorCnt.lowerLimitField).click();
-            const actual = $(selectorCnt.resetLimitF).isDisplayed();
-            expect(actual).toEqual(true);
-        })
-
-        it('TC-180 Reset limit field for ULF', function () {
-            $(selectorCnt.upperLimitField).click();
-            const actual = $(selectorCnt.resetLimitF).isDisplayed();
-            expect(actual).toEqual(true);
-        })
-
     });
 
 });

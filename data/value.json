@@ -1,0 +1,12 @@
+{
+  "counterValue": {
+    "characters": "Abcdefgh",
+    "value": 1000
+  },
+
+  "fieldValue": {
+    "inputMin": "1",
+    "inputMax": "9"
+  }
+
+}
